@@ -1,0 +1,26 @@
+name: Automated API tests using Postman CLI
+
+on:
+    push:
+      branches: [ main ]
+    pull_request:
+    workflow_dispatch:
+    schedule:
+      - cron: '40 9 * * 1-5'
+
+jobs:
+    automated-api-tests:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Install Postman CLI
+          run: |
+            curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+        - name: Login to Postman CLI
+          run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+        - name: Lint API Spec
+          run: |
+            postman spec lint "4047d36d-5efe-48bf-8a3e-7835e6239eca" --workspace-id "6a065a52-a784-47c8-8d74-655945df5bf5"  --fail-severity error --output json --report-events
+        - name: Run API tests
+          run: |
+            postman collection run "52509354-67cc0e17-e830-4b3e-85be-608862278b4c"  -e "52509354-2110500f-b058-4fbb-8322-18dbc2577467" --report-events

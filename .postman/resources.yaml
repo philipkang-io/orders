@@ -1,0 +1,12 @@
+# Use this workspace to collaborate
+workspace:
+  id: ""
+
+localResources:
+  specs:
+    - ../index.yaml
+
+cloudResources:
+  specs: {}
+  environments: {}
+  collections: {}

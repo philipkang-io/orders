@@ -1,0 +1,58 @@
+$kind: http-request
+description: Create a new order. Internally looks up the user via UserAPI2.
+url: "{{baseUrl}}/v1/orders"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "userId": "string",
+      "items": [
+        {
+          "sku": "string",
+          "quantity": 7351,
+          "price": 679.9960009605144
+        }
+      ]
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "User ID looked up against UserAPI2"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "sku",
+              "quantity"
+            ]
+          }
+        }
+      },
+      "required": [
+        "userId",
+        "items"
+      ]
+    }
+examples: ./.resources/Create a new order.resources/examples
+order: 2000

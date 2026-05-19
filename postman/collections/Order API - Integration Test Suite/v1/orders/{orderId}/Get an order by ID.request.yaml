@@ -1,0 +1,24 @@
+$kind: http-request
+description: Retrieve an order's details by ID.
+url: "{{baseUrl}}/v1/orders/:orderId"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: orderId
+    value: string
+    description: Order identifier
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+examples: ./.resources/Get an order by ID.resources/examples
+order: 1000

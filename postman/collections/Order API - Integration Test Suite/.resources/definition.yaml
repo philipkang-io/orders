@@ -1,0 +1,6 @@
+$kind: collection
+description: |
+  Order service for the API Catalog dependency demo.
+  Depends on UserAPI2 for customer profile lookup.
+variables:
+  baseUrl: "{{baseUrl}}"

@@ -1,0 +1,6 @@
+name: Env-OrderService
+values:
+  - key: baseUrl
+    value: https://e94e88a3-a42f-4b3f-9e8c-22848b06af24.mock.pstmn.io
+    enabled: true
+color: null

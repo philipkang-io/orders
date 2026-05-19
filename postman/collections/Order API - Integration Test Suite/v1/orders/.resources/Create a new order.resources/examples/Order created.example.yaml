@@ -1,0 +1,99 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/v1/orders"
+  method: POST
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "userId": "string",
+        "items": [
+          {
+            "sku": "string",
+            "quantity": 7351,
+            "price": 679.9960009605144
+          }
+        ]
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "orderId": "string",
+        "userId": "string",
+        "status": "cancelled",
+        "items": [
+          {
+            "sku": "string",
+            "quantity": 3341,
+            "price": 5857.256880229518
+          },
+          {
+            "sku": "string",
+            "quantity": 3412,
+            "price": 1326.3304133585652
+          }
+        ],
+        "total": 8574.095560972548,
+        "createdAt": "2020-02-24T18:54:59.036Z"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "paid",
+              "shipped",
+              "delivered",
+              "cancelled"
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sku": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "price": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "sku",
+                "quantity"
+              ]
+            }
+          },
+          "total": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+order: 1000
