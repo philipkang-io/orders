@@ -10,6 +10,8 @@ localResources:
   environments:
     - ../postman/environments/Demo.environment.yaml
 
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
 cloudResources:
   specs:
     ../index.yaml: 4dacd56d-084a-4096-8c0e-7de6b54ce9c6
