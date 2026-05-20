@@ -1,6 +1,6 @@
 name: Demo
 values:
   - key: baseUrl
-    value: 'https://7246d360-030d-4db5-9a4c-e6042085fe1e.mock.pstmn.io'
+    value: 'https://cfb83526-155a-4628-8a55-3c8057eb4714.mock.pstmn.io'
   - key: INVENTORY_BASE_URL
-    value: 'https://a6107deb-f242-4cfe-9649-53f2468f372b.mock.pstmn.io'
+    value: 'https://dab6c24a-6e01-40d2-9f34-0fd8436557e8.mock.pstmn.io'

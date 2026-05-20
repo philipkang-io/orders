@@ -20,10 +20,10 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Lint API Spec
         run: |
-          postman spec lint "236747fb-3cf4-44d8-8878-01742d398fe0" \
-            --workspace-id af5009a6-9406-4456-880e-4752ec632185 \
+          postman spec lint "4dacd56d-084a-4096-8c0e-7de6b54ce9c6" \
+            --workspace-id 0453f11a-88e7-4bdb-b744-5dd4a5db11d0 \
             --fail-severity error --output json --report-events
       - name: Run API tests
         run: |
-          postman collection run "52509354-0487476e-cfea-454c-b2c0-d1d2db2b2916" \
-            -e "52509354-332bc9e4-c48e-4f8a-9a7a-0fb2c3289add" --report-events
+          postman collection run "52509354-b38fa98f-8cc0-4bb6-92b8-83e4f932a9b3" \
+            -e "52509354-3c61a890-07d0-4983-8bb4-8c09972b977b" --report-events
