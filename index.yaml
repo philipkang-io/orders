@@ -3,17 +3,17 @@ info:
   title: Order API
   description: |
     Order service for the API Catalog dependency demo.
-    Depends on UserAPI2 for customer profile lookup.
+    Depends on Inventory service for stock availability check.
   version: 1.0.0
 servers:
-  - url: '{{baseUrl}}'
-    description: Mock server
+  - url: 'http://orders.orders.svc.cluster.local:4000'
+    description: K8s cluster service
 paths:
   /v1/orders:
     post:
       summary: Create a new order
       operationId: createOrder
-      description: Create a new order. Internally looks up the user via UserAPI2.
+      description: Create a new order. Internally checks item availability via Inventory service.
       requestBody:
         required: true
         content:
@@ -34,7 +34,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '404':
-          description: User not found (UserAPI2 lookup failed)
+          description: Item not found in inventory
           content:
             application/json:
               schema:
@@ -83,11 +83,11 @@ components:
   schemas:
     CreateOrderRequest:
       type: object
-      required: [userId, items]
+      required: [customerId, items]
       properties:
-        userId:
+        customerId:
           type: string
-          description: User ID looked up against UserAPI2
+          description: Customer placing the order
         items:
           type: array
           minItems: 1
@@ -109,7 +109,7 @@ components:
       properties:
         orderId:
           type: string
-        userId:
+        customerId:
           type: string
         status:
           type: string
